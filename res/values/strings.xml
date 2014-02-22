@@ -1,0 +1,28 @@
+<resources>
+
+    <string name="app_name">SBF</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_sbf">SBF</string>
+    <string name="menu_start">Start</string>
+    <string name="menu_stop">Stop</string>
+    <string name="menu_pause">Pause</string>
+    <string name="menu_resume">Resume</string>
+    <string name="menu_easy">Easy</string>
+    <string name="menu_hard">Hard</string>
+    <string name="menu_medium">Medium</string>
+    
+    <string name="mode_ready">SnowBallFight</string>
+	<string name="mode_pause">Paused\nPress Up To Resume</string>
+	<string name="mode_lose">Game Over</string>
+	<string name="mode_win_prefix">Victory!\n</string> 
+	<string name="mode_win_suffix">NeoMnT | MCookie| Wait4u</string> 
+	
+	<string name="message_stopped">Stopped</string>
+	<string name="message_good_job">Good Job!</string> 
+	<string name="message_too_fast">Too Fast</string> 
+	<string name="message_bad_angle">Bad Angle</string>
+	<string name="message_off_pad">Off Landing Pad</string>  
+
+    <string name="sbf_layout_text_text">MCookie n Wait4u</string>
+
+</resources>
