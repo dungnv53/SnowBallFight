@@ -89,7 +89,7 @@ public class Donald {
       
       int i = get_random(6);
 	      if ((i == 0) || (i == 1)) {
-	    	  if (this.dn_x > 0 && this.dn_x < 220) {  	// eo ro INHERITE COMMON nen cho luon 160 thay 
+	    	  if (this.dn_x > 0 && this.dn_x < 420) {  	// eo ro INHERITE COMMON nen cho luon 160 thay 
 	    		  // vi BOARD_WIDTH
 	    	  // dung la la fai them border = alient_width / 2
 	    	  	this.dn_x += (e_boss_move_dir/3);
@@ -106,7 +106,7 @@ public class Donald {
 	      	}
 	      else if ((i == 2) || (i == 3))
 	      {
-	    	  if (this.dn_x > 0 && this.dn_x < 220) {  	// eo ro INHERITE COMMON nen cho luon 160 thay 
+	    	  if (this.dn_x > 0 && this.dn_x < 420) {  	// eo ro INHERITE COMMON nen cho luon 160 thay 
 	    		  this.dn_x -= (e_boss_move_dir/3);	// thay vi direction
 	    	  }
 	    	  if (this.dn_y > 30 && this.dn_y < 100) {
@@ -118,7 +118,7 @@ public class Donald {
 	      }
 	      else
 	      {
-	    	  if (this.dn_x > 0 && this.dn_x < 220) {  	// eo ro INHERITE COMMON nen cho luon 160 thay
+	    	  if (this.dn_x > 0 && this.dn_x < 420) {  	// eo ro INHERITE COMMON nen cho luon 160 thay
 	    		  this.dn_x += direction;
 	    	  }
 	    	  else {
