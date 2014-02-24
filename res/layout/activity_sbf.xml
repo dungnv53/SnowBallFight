@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <com.example.sbf.SBF_View
+    <com.greenmatter.sbf.SBF_View
         android:id="@+id/sbf"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
