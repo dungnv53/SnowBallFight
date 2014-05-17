@@ -110,15 +110,11 @@ class SBF_View extends SurfaceView implements SurfaceHolder.Callback {
 
         /**
          * Current height of the surface/canvas.
-         *
-         * @see #setSurfaceSize
          */
         private int mCanvasHeight = 1;
 
         /**
          * Current width of the surface/canvas.
-         *
-         * @see #setSurfaceSize
          */
         private int mCanvasWidth = 1;
 
@@ -428,7 +424,6 @@ class SBF_View extends SurfaceView implements SurfaceHolder.Callback {
 
         /**
          * Ham run nay rat co the fai Chinh lai cho hop voi SBF
-         * Neu cu dung CHUA the nay rat de bug va ko biet dau ma lan;
          * (non-Javadoc)
          * @see java.lang.Thread#run()
          */
@@ -451,7 +446,7 @@ class SBF_View extends SurfaceView implements SurfaceHolder.Callback {
                     if (c != null) {
                         mSurfaceHolder.unlockCanvasAndPost(c);
                     }
-                }
+                }  // hay bi thread end
             }
         }
 
@@ -603,7 +598,7 @@ class SBF_View extends SurfaceView implements SurfaceHolder.Callback {
             synchronized (mSurfaceHolder) {
             	
                 boolean okStart = false;
-                if (keyCode == KeyEvent.KEYCODE_DPAD_UP) 
+                if (keyCode == KeyEvent.KEYCODE_DPAD_UP || keyCode == KeyEvent.KEYCODE_O) 
                 	okStart  = true;
                 if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) 
                     okStart  = true;
