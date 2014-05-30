@@ -21,32 +21,33 @@ public class Donald {
 	Bomb item = new Bomb (dn_x, dn_y + 20);
 	
 	
-	private Bitmap[] img_Donald = new Bitmap[4];
+	private Bitmap[] img_Donald = new Bitmap[4];      // Mảng 4 images cho enery hay hero (player). 4 ảnh này tạo nên hình sprites di chuyển.
 	
-	public int getHp() 
+	public int getHp()      // Lấy ra máu của nhân 
 	{
 		return this.hp;
 	}
 	public void setHp(int paramInt) {
 		this.hp = paramInt;
 	}
-	public void loseHp(int paramInt) {
+	public void loseHp(int paramInt) {      // Nhân vật mất máu 
 		this.hp -= paramInt;
 	}
-	public void setDonaldX(int paramInt) {
+	public void setDonaldX(int paramInt) {       // Đặt vị trí X cho nhân vật 
 		this.dn_x = paramInt;
 	}
 	public int getDonaldX() {
 		return this.dn_x;
 	}
-	public void setDonaldY(int paramInt) {
+	public void setDonaldY(int paramInt) {       // Đặt cao độ cho nhân vật 
 		this.dn_y = paramInt;
 	}
 	public int getDonaldY() {
 		return this.dn_y;
 	}
 	
-	public void setDonaldImage(Bitmap paramBitmap, int paramInt) {
+	// Đặt ảnh cho nhân vật 
+	public void setDonaldImage(Bitmap paramBitmap, int paramInt) {             
 //		this.img_Donald[paramInt] = BitmapFactory.decodeResource(res, id)
 //		ec eo set res dc
 	}
@@ -65,31 +66,42 @@ public class Donald {
 	    return i;
 	  }
 	
-	  public int get_random1(int paramInt)
-	  {
+	 public int get_random1(int paramInt)
+	 {
 		  
 	    int i = this.rnd.nextInt() % paramInt;
 	    if (i == 0)
 	      i = -5;
 	    return i;
-	  }
+	 }
+	 
+	 // Đặt id cho ảnh sprite của nhân vật. 4 ảnh của nhân vật ghép thành ảnh động qua 4 id.
 	 public void set_idx(int paramInt) {
 		 this.idx = paramInt;
 	 }
 	 public int get_idx() {
 		 return this.idx;
 	 }
+	 
+	 // Đặt vũ khí sử dụng cho nhân vật. Có thể là đá, băng, snowball hay giầy ...
 	 public void setBomb(Bomb paramBomb) {
 		 this.item = paramBomb;
 	 }
 	 public Bomb getBomb() {
 		 return this.item;
 	 }
-  public void act(int direction) { // Fai bo diretion sau khi run ok
-      
-      int i = get_random(6);
+	 
+	 /**
+	  * Kha nang ham act phải thêm 2 tham số: width + height. Như vậy bên draw thread sẽ nhẹ hơn vì không lo tính toán vị trí biên nữa.
+	  * Ko ro có lấy được width height ở Donald ko? Dự là ko vì ko có liên quan đến view. 
+	  * 
+	  */
+	 public void act(int direction, int screen_width, int screen_height) { // Fai bo diretion sau khi run ok
+		int h_bound = screen_height/7;   // biên trên dưới cho enemy move hay ném đá, snow ...
+		int w_bound = screen_width/12;   // biên 2 bên cho enemy
+		int i = get_random(6);           // random vị trí enemy, vị trí enemy random chưa được khéo như bản J2ME gốc.
 	      if ((i == 0) || (i == 1)) {
-	    	  if (this.dn_x > 0 && this.dn_x < 220) {  	// eo ro INHERITE COMMON nen cho luon 160 thay 
+	    	  if (this.dn_x > 0 && this.dn_x < (screen_width-h_bound)) {  	// eo ro INHERITE COMMON nen cho luon 160 thay 
 	    		  // vi BOARD_WIDTH
 	    	  // dung la la fai them border = alient_width / 2
 	    	  	this.dn_x += (e_boss_move_dir/3);
@@ -97,7 +109,7 @@ public class Donald {
 	    	  else {
 	    		  this.dn_x = 0;
 	    	  }
-	    	  if (this.dn_y > 30 && this.dn_y < 100) {
+	    	  if (this.dn_y > 30 && this.dn_y < screen_height/5) {       // enemy chỉ được di chuyển trong 1 khoảng 1/5 phía trên màn hình. 
 	      		this.dn_y += (e_boss_x / 3);
 	    	  }
 	    	  else {
@@ -106,10 +118,10 @@ public class Donald {
 	      	}
 	      else if ((i == 2) || (i == 3))
 	      {
-	    	  if (this.dn_x > 0 && this.dn_x < 220) {  	// eo ro INHERITE COMMON nen cho luon 160 thay 
+	    	  if (this.dn_x > 0 && this.dn_x < (screen_width-w_bound)) {  	// eo ro INHERITE COMMON nen cho luon 160 thay 
 	    		  this.dn_x -= (e_boss_move_dir/3);	// thay vi direction
 	    	  }
-	    	  if (this.dn_y > 30 && this.dn_y < 100) {
+	    	  if (this.dn_y > 30 && this.dn_y < screen_height/5) {
 	    		  this.dn_y += (e_boss_x / 4);
 	    	  }
 	    	  else {
@@ -118,13 +130,13 @@ public class Donald {
 	      }
 	      else
 	      {
-	    	  if (this.dn_x > 0 && this.dn_x < 220) {  	// eo ro INHERITE COMMON nen cho luon 160 thay
+	    	  if (this.dn_x > 0 && this.dn_x < (screen_width-w_bound)) {  	// eo ro INHERITE COMMON nen cho luon 160 thay
 	    		  this.dn_x += direction;
 	    	  }
 	    	  else {
 	    		  this.dn_x = 100;
 	    	  }
-	    	  if (this.dn_y > 30 && this.dn_y < 100) {
+	    	  if (this.dn_y > 30 && this.dn_y < screen_height/5) {
 	    	  this.dn_y -= (e_boss_x / 3);
 	    	  }
 	    	  else {
@@ -193,7 +205,7 @@ public class Donald {
 // 2 ham move va move_ai co ve ko du de tao ra animation nhu SBF thi fai?
 // Kha nang co cac doan ma lien quan da CHANGE 2 tham so DIR va X cua boss ?
 
-public void boss_move_ai()
+  public void boss_move_ai()
   // Ham nay random(6) roi chuyen sang dir 
   // thanh +-21 de move 1 khoang gan bang SIZE cua BOSS
   // con gia tri 1 thi ko ro
