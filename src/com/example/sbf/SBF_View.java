@@ -152,8 +152,8 @@ class SBF_View extends SurfaceView implements SurfaceHolder.Callback {
         private  SurfaceHolder mSurfaceHolder;
 
         
-        private int scr_width = 1080; //getWidth();         // width of game screen
-        private int scr_height = 1701; //getHeight();	    // height of game screen
+        private int scr_width = 480; //getWidth();         // width of game screen
+        private int scr_height = 786; //getHeight();	    // height of game screen
         private int x_bound = scr_width/12;        // biên ngang cho màn hình game 
         private int y_bound = scr_height/8;        // biên trên dưới cho màn hình game. 
         
@@ -164,7 +164,7 @@ class SBF_View extends SurfaceView implements SurfaceHolder.Callback {
         private  int h_x = (scr_width/2) - x_bound; // vị trí ngang của hero. 
 
         /** Y of hero center. */
-        private  int h_y = 1400; //(scr_height/2-y_bound);   // vị trí dưới của hero (player).
+        private  int h_y = 600; //(scr_height/2-y_bound);   // vị trí dưới của hero (player).
         
         /**
          * dung cho animate hero
@@ -1228,13 +1228,15 @@ class SBF_View extends SurfaceView implements SurfaceHolder.Callback {
 //            	canvas.drawBitmap(allclear, 50, 50, null);
             	String text = "Victory !... \n";
             	Paint p = new Paint();
+            	p.setTextSize(25);
             	p.setColor(Color.RED);
             	canvas.drawBitmap(allclear, 0, 30, null);
-            	canvas.drawBitmap(mHeroMoving[5], 100, 190, null);
-            	canvas.drawBitmap(v, 118, 183, null);
-            	canvas.drawText(text, 100, 140, p);
+            	canvas.drawBitmap(mHeroMoving[5], (scr_width/2-x_bound), (scr_height/2-y_bound), null);
+            	canvas.drawBitmap(v, (scr_width/2-x_bound+18), (scr_height/2-y_bound-22), null);
+            	canvas.drawText(text, (scr_width/2-x_bound), (scr_height/2 - 20), p);
             	String text2 = "Acquired 32 golds.";
-            	canvas.drawText(text2, 80, 160, p);
+            	canvas.drawText(text2, (scr_width/2-x_bound), (scr_height/2), p);
+            	canvas.save();
 //            	canvas.restore();
             }
             else if (mMode == STATE_PAUSE) {
@@ -1357,7 +1359,7 @@ class SBF_View extends SurfaceView implements SurfaceHolder.Callback {
         	int height = getHeight();   // game screen height
         	int h_bound = height/6;     // bound head n bottom of the screen
         	int step = height/15;       // step of snowball over screen
-//        	Log.d("dai x rong = ", width + " cao = " + height);
+        	Log.d("dai x rong = ", width + " cao = " + height);
         	
         	/**
         	 * neu boss con mau thi moi dc nem.
