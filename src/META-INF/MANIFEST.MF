@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+MicroEdition-Configuration: CLDC-1.0
+MIDlet-Name: SnowBallFight
+Created-By: 1.4.1_02 (Sun Microsystems Inc.)
+MIDlet-Vendor: Sun Microsystems
+MIDlet-1: SnowBallFight, SnowBallFight.png, SnowBallFight
+MIDlet-Version: 1.0
+MicroEdition-Profile: MIDP-1.0
+
